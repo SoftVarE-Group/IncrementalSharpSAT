@@ -40,9 +40,3 @@ target_link_libraries(solver_tests GTest::gtest_main libsharpSAT ${GMP_LIB} ${GM
 
 include(GoogleTest)
 gtest_discover_tests(solver_tests)
-
-# Benchmarks
-add_subdirectory(benchmarks/src)
-
-add_library(incSharpSAT_benchmark_interface SHARED benchmarks/src/incSharpSATBenchmarkInterface.cpp)
-target_link_libraries(incSharpSAT_benchmark_interface libsharpSAT ${GMP_LIB} ${GMPXX_LIB})

@@ -92,28 +92,28 @@ INSTANTIATE_TEST_SUITE_P(MultipleConfigs, SolverTests, testing::Combine(testing:
                         });
 
 TEST_P(SolverTests, DuplicateLiteralInClause){
-  prepare("../tests/resources/duplicate_literal");
+  prepare("../../tests/resources/duplicate_literal");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 3);
 }
 
 TEST_P(SolverTests, TautologicalClause){
-  prepare("../tests/resources/taut_clause");
+  prepare("../../tests/resources/taut_clause");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 5);
 }
 
 TEST_P(SolverTests, DuplicateLiteralInTautologicalClause){
-  prepare("../tests/resources/duplicate_literal_in_taut_clause");
+  prepare("../../tests/resources/duplicate_literal_in_taut_clause");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 12);
 }
 
 TEST_P(SolverTests, OneAssumptionSmall){
-  prepare("../tests/resources/one_clause");
+  prepare("../../tests/resources/one_clause");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 15);
@@ -131,7 +131,7 @@ TEST_P(SolverTests, OneAssumptionLargeish){
   // with the normal factor, the adaptive limit is too low for this formula. This is not a bug, but a conceptual problem
   config.adaptive_cache_limit_factor_ = 1000;
 
-  prepare("../tests/resources/xor_tree_7");
+  prepare("../../tests/resources/xor_tree_7");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("7237005577332262213973186563042994240829374041602535252466099000494570602496"));
@@ -149,7 +149,7 @@ TEST_P(SolverTests, DISABLED_OneAssumptionLarge){
   // with the normal factor, the adaptive limit is too low for this formula. This is not a bug, but a conceptual problem
   config.adaptive_cache_limit_factor_ = 40000;
 
-  prepare("../tests/resources/xor_tree_8");
+  prepare("../../tests/resources/xor_tree_8");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("837987995621412318723376562387865382967460363787024586107722590232610251879596686050117143635431464230626991136655378178359617675746660621652103062880256"));
@@ -163,7 +163,7 @@ TEST_P(SolverTests, DISABLED_OneAssumptionLarge){
 }
 
 TEST_P(SolverTests, StartsWithOneAssumptionSmall){
-  prepare("../tests/resources/simple_implication");
+  prepare("../../tests/resources/simple_implication");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 3);
@@ -176,7 +176,7 @@ TEST_P(SolverTests, StartsWithOneAssumptionSmall){
 }
 
 TEST_P(SolverTests, StartsWithOneAssumptionLarge){
-  prepare("../tests/resources/php_5");
+  prepare("../../tests/resources/php_5");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 6);
@@ -189,7 +189,7 @@ TEST_P(SolverTests, StartsWithOneAssumptionLarge){
 }
 
 TEST_P(SolverTests, MultipleAssumptions){
-  prepare("../tests/resources/square_grid_4");
+  prepare("../../tests/resources/square_grid_4");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 128);
@@ -203,7 +203,7 @@ TEST_P(SolverTests, MultipleAssumptions){
 }
 
 TEST_P(SolverTests, DamageableByProprocessing){
-  prepare("../tests/resources/damageable_by_preprocessing");
+  prepare("../../tests/resources/damageable_by_preprocessing");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 4);
@@ -214,7 +214,7 @@ TEST_P(SolverTests, DamageableByProprocessing){
 }
 
 TEST_P(SolverTests, AddClausesIndividuallySmall){
-  prepare("../tests/resources/overlapping_ternary");
+  prepare("../../tests/resources/overlapping_ternary");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 12);
@@ -231,7 +231,7 @@ TEST_P(SolverTests, AddClausesIndividuallySmall){
 }
 
 TEST_P(SolverTests, AddClausesIndividuallyLarge){
-  prepare("../tests/resources/exp_3");
+  prepare("../../tests/resources/exp_3");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 384);
@@ -248,7 +248,7 @@ TEST_P(SolverTests, AddClausesIndividuallyLarge){
 }
 
 TEST_P(SolverTests, AddMultipleClausesAtOnce){
-  prepare("../tests/resources/fact");
+  prepare("../../tests/resources/fact");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 12);
@@ -265,7 +265,7 @@ TEST_P(SolverTests, AddMultipleClausesAtOnce){
 }
 
 TEST_P(SolverTests, AddClauseIndividuallyThenMultipleClausesAtOnce){
-  prepare("../tests/resources/const_grid_64");
+  prepare("../../tests/resources/const_grid_64");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("12979374126081769472"));
@@ -282,7 +282,7 @@ TEST_P(SolverTests, AddClauseIndividuallyThenMultipleClausesAtOnce){
 }
 
 TEST_P(SolverTests, IncreaseVariableNumber){
-  prepare("../tests/resources/pyramid_10");
+  prepare("../../tests/resources/pyramid_10");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("4710128697246244834921603689"));
@@ -296,7 +296,7 @@ TEST_P(SolverTests, IncreaseVariableNumber){
 }
 
 TEST_P(SolverTests, AddClauseIndividuallyAndIncreaseVariableNumber){
-  prepare("../tests/resources/line_128");
+  prepare("../../tests/resources/line_128");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("85070591730234615865843651857942052864"));
@@ -311,7 +311,7 @@ TEST_P(SolverTests, AddClauseIndividuallyAndIncreaseVariableNumber){
 
 
 TEST_P(SolverTests, MultipleAssumptionsAndAddMultipleClausesAtOnce){
-  prepare("../tests/resources/log_road_5");
+  prepare("../../tests/resources/log_road_5");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("4194304"));
@@ -326,14 +326,14 @@ TEST_P(SolverTests, MultipleAssumptionsAndAddMultipleClausesAtOnce){
 
 TEST_P(SolverTests, ContradictoryUnitClauses){
   // this test fails in the orignal solver
-  prepare("../tests/resources/contradictory_unit_clauses");
+  prepare("../../tests/resources/contradictory_unit_clauses");
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), 0);
 }
 
 TEST_P(SolverTests, RemoveClausesIndividually){
-  prepare("../tests/resources/berkeleydb.dimacs", true);
+  prepare("../../tests/resources/berkeleydb.dimacs", true);
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("4080389785"));
@@ -350,7 +350,7 @@ TEST_P(SolverTests, RemoveClausesIndividually){
 }
 
 TEST_P(SolverTests, RemoveMultipleClausesAtOnce){
-  prepare("../tests/resources/financialServices.dimacs", true);
+  prepare("../../tests/resources/financialServices.dimacs", true);
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("97451212554676"));
@@ -367,7 +367,7 @@ TEST_P(SolverTests, RemoveMultipleClausesAtOnce){
 }
 
 TEST_P(SolverTests, RemoveUnitClauses){
-  prepare("../tests/resources/min_space_1024", true);
+  prepare("../../tests/resources/min_space_1024", true);
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("1396"));
@@ -384,7 +384,7 @@ TEST_P(SolverTests, RemoveUnitClauses){
 }
 
 TEST_P(SolverTests, AddAndRemoveClauses){
-  prepare("../tests/resources/embtoolkit.dimacs", true);
+  prepare("../../tests/resources/embtoolkit.dimacs", true);
 
   solve_next_query();
   EXPECT_EQ(solver->statistics().final_solution_count(), mpz_class("5134555717728405373874099868199035516442186387628134162059302739740605826105226151439263334400000"));
